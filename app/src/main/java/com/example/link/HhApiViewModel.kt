@@ -24,7 +24,7 @@ init {
         viewModelScope.launch {
            // _status.value = HhApiStatus.LOADING
             try {
-                val listResult = HhApi.retrofitService.getEmployers("газпром")
+                val listResult = HhApi.retrofitService.getEmployers().size
                 _status.value = "Success: ${listResult} "
             } catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
