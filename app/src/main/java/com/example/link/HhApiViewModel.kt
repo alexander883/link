@@ -1,14 +1,10 @@
 package com.example.link
 
-import android.view.View
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import retrofit2.http.Query
 
 class HhApiViewModel: ViewModel() {
 
@@ -24,7 +20,7 @@ init {
         viewModelScope.launch {
            // _status.value = HhApiStatus.LOADING
             try {
-                val listResult = HhApi.retrofitService.getEmployers().size
+                val listResult = HhApi.retrofitService.getEmployers("газпром")
                 _status.value = "Success: ${listResult} "
             } catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
