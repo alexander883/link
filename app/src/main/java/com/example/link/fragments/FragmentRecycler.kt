@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.link.adapter.HhAdapter
-import com.example.link.HhApiViewModel
+import com.example.link.viewmodel.HhApiViewModel
 import com.example.link.databinding.FragmentRecyclerBinding
 
 class FragmentRecycler : Fragment() {
@@ -38,8 +38,7 @@ class FragmentRecycler : Fragment() {
             foundHh.adapter=adapter
 
         }
-        val jj=apiviewmodel?.status?.value!!
-        Log.i("LOG", "$jj")
+
         Log.i("LOG", "BINding end")
 
 

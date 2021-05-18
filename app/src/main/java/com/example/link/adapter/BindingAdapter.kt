@@ -6,7 +6,7 @@ import com.example.link.adapter.HhAdapter
 
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<Item>?) {
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<Item>) {
     val adapter = recyclerView.adapter as HhAdapter
-    adapter.data
+    adapter.data=data
 }

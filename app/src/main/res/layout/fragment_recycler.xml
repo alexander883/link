@@ -5,7 +5,7 @@
     <data>
         <variable
             name="ApiViewModel"
-            type="com.example.link.HhApiViewModel" />
+            type="com.example.link.viewmodel.HhApiViewModel" />
         <variable
             name="FragmentRecycler"
             type="com.example.link.fragments.FragmentRecycler" />
@@ -17,6 +17,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/found_hh"
+
+            app:listData="@{ApiViewModel.status}"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"

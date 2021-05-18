@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.link.HhApiViewModel
+import com.example.link.viewmodel.HhApiViewModel
 import com.example.link.R
 import com.example.link.databinding.Fragment1Binding
 

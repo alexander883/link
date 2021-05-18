@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.link.HhApiViewModel
+import com.example.link.viewmodel.HhApiViewModel
 import com.example.link.databinding.FragmentResultBinding
 
 

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="ApiViewModel"
-            type="com.example.link.HhApiViewModel" />
+            type="com.example.link.viewmodel.HhApiViewModel" />
         <variable
             name="FragmentResult"
             type="com.example.link.fragments.FragmentResult" />

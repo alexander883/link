@@ -1,9 +1,11 @@
-package com.example.link
+package com.example.link.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.link.HhApi
+import com.example.link.Item
 import kotlinx.coroutines.launch
 
 class HhApiViewModel: ViewModel() {
@@ -17,11 +19,12 @@ class HhApiViewModel: ViewModel() {
 
 init {
    // getHh()
-   // _status.value= List<Ite>()
+    _status.value= listOf(Item("идет загрузка"))
 }
  fun setSearch(text:String){
      _search.value=text
  }
+
 
     fun getHh() {
         viewModelScope.launch {
