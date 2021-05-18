@@ -44,7 +44,6 @@ class Fragment1 : Fragment() {
 
     fun pressButton2(){
         getData()
-        Log.i("LOG", " Переход 2")
         findNavController().navigate(R.id.action_fragment1_to_fragmentRecycler)
     }
     private fun getData(){
