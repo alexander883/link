@@ -1,4 +1,4 @@
-package com.example.link
+package com.example.link.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.link.Item
+import com.example.link.R
 
 
 class HhAdapter: RecyclerView.Adapter<HhAdapter.ViewHolder>() {
@@ -43,7 +45,7 @@ class HhAdapter: RecyclerView.Adapter<HhAdapter.ViewHolder>() {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater
-                    .inflate(R. layout.found_item, parent, false)
+                    .inflate(R.layout.found_item, parent, false)
 
                 return ViewHolder(view)
             }

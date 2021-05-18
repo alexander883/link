@@ -17,7 +17,7 @@ class HhApiViewModel: ViewModel() {
 
 init {
    // getHh()
-    //_status.value="ничего"
+   // _status.value= List<Ite>()
 }
  fun setSearch(text:String){
      _search.value=text

@@ -1,14 +1,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".FragmentResult">
+    tools:context=".fragments.FragmentResult">
     <data>
         <variable
             name="ApiViewModel"
             type="com.example.link.HhApiViewModel" />
         <variable
             name="FragmentResult"
-            type="com.example.link.FragmentResult" />
+            type="com.example.link.fragments.FragmentResult" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -1,23 +1,23 @@
-package com.example.link
+package com.example.link.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-import com.example.link.databinding.Fragment1Binding
+import androidx.fragment.app.activityViewModels
+import com.example.link.HhApiViewModel
 import com.example.link.databinding.FragmentResultBinding
 
 
 class FragmentResult : Fragment() {
     private lateinit var binding: FragmentResultBinding
-    private var apiviewmodel: HhApiViewModel?=null
+    private val apiviewmodel: HhApiViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        apiviewmodel = ViewModelProvider(requireActivity()).get(HhApiViewModel::class.java)
+       // apiviewmodel = ViewModelProvider(requireActivity()).get(HhApiViewModel::class.java)
         val fragmentBinding = FragmentResultBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root

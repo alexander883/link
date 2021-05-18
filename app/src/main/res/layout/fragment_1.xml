@@ -10,7 +10,7 @@
             type="com.example.link.HhApiViewModel" />
         <variable
             name="Fragment1"
-            type="com.example.link.Fragment1" />
+            type="com.example.link.fragments.Fragment1" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
