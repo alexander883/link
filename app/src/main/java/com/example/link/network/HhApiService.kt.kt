@@ -19,10 +19,6 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-
-
-
-
 interface HhApiService {
     @GET(request)
     suspend fun getEmployers(@Query("text") text:String):EmployersData

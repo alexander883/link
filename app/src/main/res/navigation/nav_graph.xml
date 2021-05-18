@@ -7,7 +7,23 @@
 
     <fragment
         android:id="@+id/fragment1"
-        android:name="com.example.link.Fragment1"
+        android:name="com.example.link.fragments.Fragment1"
         android:label="fragment_1"
-        tools:layout="@layout/fragment_1" />
+        tools:layout="@layout/fragment_1" >
+        <action
+            android:id="@+id/action_fragment1_to_fragmentResult"
+            app:destination="@id/fragmentResult" />
+        <action
+            android:id="@+id/action_fragment1_to_fragmentRecycler"
+            app:destination="@id/fragmentRecycler" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentResult"
+        android:name="com.example.link.fragments.FragmentResult"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
+    <fragment
+        android:id="@+id/fragmentRecycler"
+        android:name="com.example.link.fragments.FragmentRecycler"
+        android:label="FragmentRecycler" />
 </navigation>

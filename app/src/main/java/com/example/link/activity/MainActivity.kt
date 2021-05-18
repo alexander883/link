@@ -1,9 +1,10 @@
-package com.example.link
+package com.example.link.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.link.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController

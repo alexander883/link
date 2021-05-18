@@ -7,23 +7,47 @@
     <data>
         <variable
             name="ApiViewModel"
-            type="com.example.link.HhApiViewModel" />
+            type="com.example.link.viewmodel.HhApiViewModel" />
         <variable
             name="Fragment1"
-            type="com.example.link.Fragment1" />
+            type="com.example.link.fragments.Fragment1" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-        <TextView
-            android:id="@+id/textView2"
+        <EditText
+            android:id="@+id/text_searh"
+            android:text="газпром"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{ApiViewModel.status.toString()}"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="200dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            tools:text="ttttttt"
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="292dp"
+            android:onClick="@{() ->Fragment1.pressButton1()}"
+            android:text="Button1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button2"
+            android:onClick="@{() ->Fragment1.pressButton2()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="264dp"
+            android:layout_marginTop="296dp"
+            android:text="Button2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
