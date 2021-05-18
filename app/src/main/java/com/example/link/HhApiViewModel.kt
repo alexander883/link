@@ -8,22 +8,31 @@ import kotlinx.coroutines.launch
 
 class HhApiViewModel: ViewModel() {
 
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String> = _status
+    private val _status = MutableLiveData<List<Item>>()
+    val status: LiveData<List<Item>> = _status
+
+
+    private val _search = MutableLiveData<String>()
+    val search: LiveData<String> = _search
+
 init {
-    getHh()
-    _status.value="ничего"
+   // getHh()
+    //_status.value="ничего"
 }
+ fun setSearch(text:String){
+     _search.value=text
+ }
 
-
-    private fun getHh() {
+    fun getHh() {
         viewModelScope.launch {
            // _status.value = HhApiStatus.LOADING
             try {
-                val listResult = HhApi.retrofitService.getEmployers("газпром")
-                _status.value = "Success: ${listResult} "
+                val listResult = HhApi.retrofitService.getEmployers(search.value!!)
+                _status.value = listResult.items
+               // _status.value = "Success: ${listResult} "
+               // _status.value = "Success: ${listResult.items[5]} "
             } catch (e: Exception) {
-                _status.value = "Failure: ${e.message}"
+               // _status.value = "Failure: ${e.message}"
             }
         }
     }
