@@ -21,7 +21,8 @@ init {
            // _status.value = HhApiStatus.LOADING
             try {
                 val listResult = HhApi.retrofitService.getEmployers("газпром")
-                _status.value = "Success: ${listResult} "
+                _status.value =listResult.items[99].name
+              //  _status.value = "Success: ${listResult} "
             } catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
             }
