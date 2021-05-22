@@ -17,12 +17,16 @@
 
         <TextView
             android:id="@+id/countFound"
+            style="@style/Widget.TipTime.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="164dp"
-            android:text="@{ApiViewModel.countFound.toString()}"
+
+            android:text="@{@string/all_vacancies(ApiViewModel.countFound.toString())}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="77" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/found_hh"
@@ -30,14 +34,45 @@
             android:layout_height="0dp"
 
             android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@+id/button_back"
+
 
             app:layout_constraintTop_toBottomOf="@+id/countFound"
+            app:listData="@{ApiViewModel.status}">
 
-            app:listData="@{ApiViewModel.status}" />
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() ->FragmentRecycler.onClickBack()}"
+            android:text="@string/back"
+            android:visibility="@{ApiViewModel.visibilityButtonBack}"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/found_hh"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/button_forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() ->FragmentRecycler.onClickForward()}"
+
+            android:text="->"
+            android:visibility="@{ApiViewModel.visibilityButtonForward}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -40,15 +40,19 @@ class FragmentRecycler : Fragment(), HhAdapter.OnItemClickListener  {
 
         }
 
-        Log.i("LOG", "BINding end")
-
-
-       adapter.data=apiviewmodel?.status?.value!!
+       adapter.data=apiviewmodel.status?.value!!
 
       //  Toast.makeText(requireContext(), "${k[0]}", Toast.LENGTH_SHORT).show()
     }
     override fun onItemClick(position: Int) {
         val clickedItem =adapter.data[position]
         Toast.makeText(requireContext(), "$position", Toast.LENGTH_SHORT).show()
+    }
+
+    fun onClickBack(){
+
+    }
+    fun onClickForward(){
+
     }
 }

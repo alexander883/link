@@ -5,4 +5,7 @@
 
 
     <string name="loading">Идет загрузка</string>
+    <string name="back"><![CDATA[ <— ]]></string>
+    <string name="all_vacancies">Найдено компаний: %s</string>
+
 </resources>

@@ -19,9 +19,18 @@ class HhApiViewModel: ViewModel() {
     private val _countFound= MutableLiveData<String>()
     val countFound: LiveData<String> = _countFound
 
+    private val _visibilityButtonBack= MutableLiveData<Boolean>()
+    val visibilityButtonBack: LiveData<Boolean> =_visibilityButtonBack
+    private val _visibilityButtonForward= MutableLiveData<Boolean>()
+    val visibilityButtonForward: LiveData<Boolean> =_visibilityButtonForward
+
+    val countPages= MutableLiveData<Int>()
+
 init {
    // getHh()
-    _status.value= listOf(Item("идет загрузка"))
+    _status.value= arrayListOf<Item>()
+    _visibilityButtonBack.value=true
+    _visibilityButtonForward.value=true
 }
  fun setSearch(text:String){
      _search.value=text
@@ -35,6 +44,7 @@ init {
                 val listResult = HhApi.retrofitService.getEmployers(search.value!!, "100", "0")
                 _status.value = listResult.items
                 _countFound.value=listResult.found.toString()
+                countPages.value=listResult.pages
                // _status.value = "Success: ${listResult} "
                // _status.value = "Success: ${listResult.items[5]} "
             } catch (e: Exception) {

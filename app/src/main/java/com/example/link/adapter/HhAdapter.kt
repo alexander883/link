@@ -34,6 +34,7 @@ class HhAdapter( private  val listener: OnItemClickListener
       //  val enWord: TextView = itemView.findViewById(R.id.en_word)
         private val employer: TextView = itemView.findViewById(R.id.employer)
         private val posit: TextView = itemView.findViewById(R.id.posit)
+        private val countVac:TextView=itemView.findViewById(R.id.vacCount)
 
         init {
             itemView.setOnClickListener(this)
@@ -47,6 +48,7 @@ class HhAdapter( private  val listener: OnItemClickListener
         }
         fun bind(item: Item, position: Int) {
             employer.text = item.name
+            countVac.text=item.open_vacancies.toString()
             posit.text=(position+1).toString()
         }
     }
