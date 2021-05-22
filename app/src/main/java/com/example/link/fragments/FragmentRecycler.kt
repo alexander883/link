@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+
+import com.example.link.R
 import com.example.link.adapter.HhAdapter
 import com.example.link.databinding.FragmentRecyclerBinding
 import com.example.link.viewmodel.HhApiViewModel
@@ -53,6 +56,8 @@ class FragmentRecycler : Fragment(), HhAdapter.OnItemClickListener  {
 
     }
     fun onClickForward(){
-
+        apiviewmodel.clickForward()
+        findNavController().navigate(R.id.action_fragmentRecycler_self)
+        //Toast.makeText(requireContext(), "hrhdh", Toast.LENGTH_SHORT).show()
     }
 }

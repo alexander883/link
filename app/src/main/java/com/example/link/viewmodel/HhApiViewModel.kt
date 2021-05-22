@@ -35,7 +35,7 @@ init {
    // getHh()
     _employers.value= arrayListOf<Item>()
     _visibilityButtonBack.value=false
-    _visibilityButtonForward.value=true
+    _visibilityButtonForward.value=false
     _currentPage.value=1
     _totalPages.value=1
 }
@@ -48,9 +48,9 @@ init {
         viewModelScope.launch {
            // _status.value = HhApiStatus.LOADING
             try {
-                val currentPage=currentPage.value!!-1
+                val page=currentPage.value!!-1
                 val listResult = HhApi.retrofitService.getEmployers(
-                    search.value!!, perPage.toString(), currentPage.toString())
+                    search.value!!, perPage.toString(), page.toString())
 
                 _employers.value = listResult.items
                 _countFound.value=listResult.found
@@ -61,6 +61,12 @@ init {
                 else{
                     _totalPages.value =(countFound.value!! / perPage)+1
                 }
+                if ((totalPages.value!! > 1) and (currentPage.value!!<totalPages.value!!)){
+                    _visibilityButtonForward.value=true
+                }
+                else{_visibilityButtonForward.value=false
+                }
+
 
                // _status.value = "Success: ${listResult} "
                // _status.value = "Success: ${listResult.items[5]} "
@@ -68,6 +74,10 @@ init {
                // _status.value = "Failure: ${e.message}"
             }
         }
+    }
+    fun clickForward(){
+        _currentPage.value=currentPage.value!! + 1
+        getHh()
     }
 
 }
