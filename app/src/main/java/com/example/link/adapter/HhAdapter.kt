@@ -1,5 +1,6 @@
 package com.example.link.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,9 +47,10 @@ class HhAdapter( private  val listener: OnItemClickListener
                 listener.onItemClick(position)
             }
         }
+        @SuppressLint("SetTextI18n")
         fun bind(item: Item, position: Int) {
             employer.text = item.name
-            countVac.text=item.open_vacancies.toString()
+            countVac.text="Вакансий: "+item.open_vacancies.toString()
             posit.text=(position+1).toString()
         }
     }

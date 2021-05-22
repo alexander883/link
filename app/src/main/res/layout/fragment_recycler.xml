@@ -10,6 +10,7 @@
             name="FragmentRecycler"
             type="com.example.link.fragments.FragmentRecycler" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="@{@string/all_vacancies(ApiViewModel.countFound.toString())}"
+            android:text="@{@string/all_employers(ApiViewModel.countFound.toString())}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,20 +35,19 @@
             android:layout_height="0dp"
 
             android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintBottom_toTopOf="@+id/button_back"
-
-
             app:layout_constraintTop_toBottomOf="@+id/countFound"
+
+
+            app:layout_constraintVertical_bias="0.0"
             app:listData="@{ApiViewModel.status}">
 
         </androidx.recyclerview.widget.RecyclerView>
-
 
 
         <Button
@@ -73,6 +73,16 @@
             android:visibility="@{ApiViewModel.visibilityButtonForward}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/text_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/page_of_pages(ApiViewModel.currentPage.toString(), ApiViewModel.totalPages.toString())}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_forward"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_back" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
