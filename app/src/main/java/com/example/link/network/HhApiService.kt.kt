@@ -6,10 +6,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+///////////////https://github.com/hhru/api
 
 private const val BASE_URL ="https://api.hh.ru/"
-const val request="employers"
-
+private const val request="employers"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -21,7 +21,11 @@ private val retrofit = Retrofit.Builder()
 
 interface HhApiService {
     @GET(request)
-    suspend fun getEmployers(@Query("text") text:String):EmployersData
+    suspend fun getEmployers(
+        @Query("text") text:String,
+        @Query("per_page") per_page:String,
+        @Query("page") page:String
+    ):EmployersData
 }
 
 object HhApi {

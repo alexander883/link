@@ -1,7 +1,6 @@
 package com.example.link.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.link.viewmodel.HhApiViewModel
 import com.example.link.R
 import com.example.link.databinding.Fragment1Binding
+import com.example.link.viewmodel.HhApiViewModel
 
 class Fragment1 : Fragment() {
     private lateinit var binding: Fragment1Binding
@@ -21,7 +20,6 @@ class Fragment1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       // apiviewmodel = ViewModelProvider(requireActivity()).get(HhApiViewModel::class.java)
         val fragmentBinding = Fragment1Binding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root

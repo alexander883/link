@@ -2,19 +2,20 @@ package com.example.link.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.link.adapter.HhAdapter
-import com.example.link.viewmodel.HhApiViewModel
 import com.example.link.databinding.FragmentRecyclerBinding
+import com.example.link.viewmodel.HhApiViewModel
 
-class FragmentRecycler : Fragment() {
+class FragmentRecycler : Fragment(), HhAdapter.OnItemClickListener  {
     private lateinit var binding: FragmentRecyclerBinding
     private val apiviewmodel: HhApiViewModel by activityViewModels()
-    private val adapter = HhAdapter()
+    private val adapter = HhAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,5 +46,9 @@ class FragmentRecycler : Fragment() {
        adapter.data=apiviewmodel?.status?.value!!
 
       //  Toast.makeText(requireContext(), "${k[0]}", Toast.LENGTH_SHORT).show()
+    }
+    override fun onItemClick(position: Int) {
+        val clickedItem =adapter.data[position]
+        Toast.makeText(requireContext(), "$position", Toast.LENGTH_SHORT).show()
     }
 }

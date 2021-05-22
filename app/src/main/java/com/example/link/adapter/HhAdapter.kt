@@ -4,14 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.TransitionInflater.from
 import com.example.link.Item
 import com.example.link.R
 
-
-class HhAdapter: RecyclerView.Adapter<HhAdapter.ViewHolder>() {
+class HhAdapter( private  val listener: OnItemClickListener
+): RecyclerView.Adapter<HhAdapter.ViewHolder>() {
 
     var data =  listOf<Item>()
         set(value) {
@@ -26,31 +24,33 @@ class HhAdapter: RecyclerView.Adapter<HhAdapter.ViewHolder>() {
         holder.bind(item, position)
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        val itemView = LayoutInflater.from(parent.context).inflate(R. layout.found_item, parent, false)
+        return ViewHolder(itemView)
     }
 
-    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
-        private val t: TextView = itemView.findViewById(R.id.text1)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+      //  val enWord: TextView = itemView.findViewById(R.id.en_word)
+        private val employer: TextView = itemView.findViewById(R.id.employer)
+        private val posit: TextView = itemView.findViewById(R.id.posit)
 
-        private val posit: TextView =itemView.findViewById(R.id.posit)
-
-        fun bind(item: Item, position: Int) {
-            t.text =item.name
-
-            posit.text=(position+1).toString()
-
+        init {
+            itemView.setOnClickListener(this)
         }
 
-        companion object {
-            fun from(parent: ViewGroup): ViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater
-                    .inflate(R. layout.found_item, parent, false)
-
-                return ViewHolder(view)
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
             }
         }
+        fun bind(item: Item, position: Int) {
+            employer.text = item.name
+            posit.text=(position+1).toString()
+        }
+    }
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }

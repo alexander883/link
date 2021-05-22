@@ -13,9 +13,11 @@ class HhApiViewModel: ViewModel() {
     private val _status = MutableLiveData<List<Item>>()
     val status: LiveData<List<Item>> = _status
 
-
     private val _search = MutableLiveData<String>()
     val search: LiveData<String> = _search
+
+    private val _countFound= MutableLiveData<String>()
+    val countFound: LiveData<String> = _countFound
 
 init {
    // getHh()
@@ -30,8 +32,9 @@ init {
         viewModelScope.launch {
            // _status.value = HhApiStatus.LOADING
             try {
-                val listResult = HhApi.retrofitService.getEmployers(search.value!!)
+                val listResult = HhApi.retrofitService.getEmployers(search.value!!, "100", "0")
                 _status.value = listResult.items
+                _countFound.value=listResult.found.toString()
                // _status.value = "Success: ${listResult} "
                // _status.value = "Success: ${listResult.items[5]} "
             } catch (e: Exception) {
