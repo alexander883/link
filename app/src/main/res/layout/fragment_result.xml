@@ -19,7 +19,7 @@
             android:id="@+id/text_found"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{ApiViewModel.status.toString()}"
+            android:text="@{ApiViewModel.employers.toString()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="gdgdgdgd" />

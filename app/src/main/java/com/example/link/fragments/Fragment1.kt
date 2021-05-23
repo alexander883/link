@@ -35,6 +35,7 @@ class Fragment1 : Fragment() {
 
     }
 
+
     fun pressButton1(){
         getData()
         findNavController().navigate(R.id.action_fragment1_to_fragmentResult)
@@ -48,6 +49,6 @@ class Fragment1 : Fragment() {
         val searh=binding.textSearh.text.toString()
         apiviewmodel.setSearch(searh)
         Toast.makeText(requireContext(), "$searh", Toast.LENGTH_SHORT).show()
-        apiviewmodel?.getHh()
+      //  apiviewmodel?.getHh()
     }
 }

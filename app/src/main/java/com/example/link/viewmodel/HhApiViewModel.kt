@@ -7,11 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.link.HhApi
 import com.example.link.Item
 import kotlinx.coroutines.launch
+
+
 private const val perPage=100
 class HhApiViewModel: ViewModel() {
 
     private val _employers = MutableLiveData<List<Item>>()
-    val status: LiveData<List<Item>> = _employers
+    val employers: LiveData<List<Item>> = _employers
 
     private val _search = MutableLiveData<String>()
     val search: LiveData<String> = _search
@@ -39,6 +41,9 @@ init {
     _currentPage.value=1
     _totalPages.value=1
 }
+
+
+
  fun setSearch(text:String){
      _search.value=text
  }
@@ -61,11 +66,9 @@ init {
                 else{
                     _totalPages.value =(countFound.value!! / perPage)+1
                 }
-                if ((totalPages.value!! > 1) and (currentPage.value!!<totalPages.value!!)){
-                    _visibilityButtonForward.value=true
-                }
-                else{_visibilityButtonForward.value=false
-                }
+                _visibilityButtonForward.value = (totalPages.value!! > 1) and (currentPage.value!!<totalPages.value!!)
+
+                _visibilityButtonBack.value = currentPage.value!! !=1
 
 
                // _status.value = "Success: ${listResult} "
@@ -80,6 +83,16 @@ init {
         getHh()
     }
 
+    fun clickBack(){
+        _currentPage.value=currentPage.value!! - 1
+        getHh()
+    }
+
+    fun reset(){
+        _employers.value= arrayListOf<Item>()
+        _visibilityButtonBack.value=false
+        _visibilityButtonForward.value=false
+        _currentPage.value=1
+        _totalPages.value=1
+    }
 }
-
-

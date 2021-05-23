@@ -45,7 +45,7 @@
 
 
             app:layout_constraintVertical_bias="0.0"
-            app:listData="@{ApiViewModel.status}">
+            app:listData="@{ApiViewModel.employers}">
 
         </androidx.recyclerview.widget.RecyclerView>
 
