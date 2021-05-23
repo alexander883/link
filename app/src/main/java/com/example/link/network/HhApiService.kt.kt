@@ -6,11 +6,12 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 ///////////////https://github.com/hhru/api
 
 private const val BASE_URL ="https://api.hh.ru/"
-private const val request="employers"
+private const val request="employers/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -38,8 +39,8 @@ object HhApi {
 
 
 interface HhEmApiService {
-    @GET("employers/1455")
-    suspend fun getEmployer(
+    @GET("$request{employer_id}")
+    suspend fun getEmployer(@Path("employer_id") id: String,
       ): EmployerData
 }
 

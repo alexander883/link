@@ -76,7 +76,7 @@ init {
                 else{
                     _totalPages.value =(countFound.value!! / perPage)+1
                 }
-                _visibilityButtonForward.value = (totalPages.value!! > 1) and (currentPage.value!!<totalPages.value!!)
+                _visibilityButtonForward.value = (totalPages.value!! > 1)and (currentPage.value!!<totalPages.value!!)
 
                 _visibilityButtonBack.value = currentPage.value!! !=1
 
@@ -92,7 +92,7 @@ init {
     fun getEh() {
         viewModelScope.launch {
             try {
-                val res= EApi.retrofitService.getEmployer()
+                val res= EApi.retrofitService.getEmployer("1455")
                 _inf.value=res.openVacancies
             }
         catch (e: Exception){
