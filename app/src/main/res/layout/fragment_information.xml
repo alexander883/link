@@ -7,7 +7,7 @@
     <data>
         <variable
             name="ApiViewModel"
-            type="com.example.link.viewmodel.HhApiViewModel" />
+            type="com.example.link.viewmodel.SharedViewModel" />
         <variable
             name="FragmentInformation"
             type="com.example.link.fragments.FragmentInformation" />

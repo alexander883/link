@@ -7,7 +7,7 @@
     <data>
         <variable
             name="ApiViewModel"
-            type="com.example.link.viewmodel.HhApiViewModel" />
+            type="com.example.link.viewmodel.SharedViewModel" />
         <variable
             name="Fragment1"
             type="com.example.link.fragments.Fragment1" />
@@ -19,22 +19,24 @@
 
         <EditText
             android:id="@+id/text_searh"
-            android:text="газпром"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="200dp"
             android:ems="10"
             android:inputType="text"
+            android:text="газпром"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
 
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="292dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="384dp"
             android:onClick="@{() ->Fragment1.pressButton1()}"
             android:text="Button1"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,13 +44,28 @@
 
         <Button
             android:id="@+id/button2"
-            android:onClick="@{() ->Fragment1.pressButton2()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="264dp"
-            android:layout_marginTop="296dp"
-            android:text="Button2"
+            android:onClick="@{() ->Fragment1.pressButton2()}"
+            android:text="Искать"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/Widget.TipTime.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Поиск компаний на hh.ru"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.220" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

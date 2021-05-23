@@ -9,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 ///////////////https://github.com/hhru/api
-
+////https://github.com/hhru/api/blob/master/docs/employers.md#search
 private const val BASE_URL ="https://api.hh.ru/"
 private const val request="employers/"
 

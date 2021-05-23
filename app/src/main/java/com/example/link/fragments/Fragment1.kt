@@ -10,11 +10,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.link.R
 import com.example.link.databinding.Fragment1Binding
-import com.example.link.viewmodel.HhApiViewModel
+import com.example.link.viewmodel.SharedViewModel
 
 class Fragment1 : Fragment() {
     private lateinit var binding: Fragment1Binding
-    private val apiviewmodel: HhApiViewModel by activityViewModels()
+    private val apiviewmodel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

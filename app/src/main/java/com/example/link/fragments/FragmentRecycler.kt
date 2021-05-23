@@ -12,11 +12,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.link.R
 import com.example.link.adapter.EmployersAdapter
 import com.example.link.databinding.FragmentRecyclerBinding
-import com.example.link.viewmodel.HhApiViewModel
+import com.example.link.viewmodel.SharedViewModel
 
 class FragmentRecycler : Fragment(), EmployersAdapter.OnItemClickListener  {
     private lateinit var binding: FragmentRecyclerBinding
-    private val apiviewmodel: HhApiViewModel by activityViewModels()
+    private val apiviewmodel: SharedViewModel by activityViewModels()
     private val adapter = EmployersAdapter(this)
 
     override fun onCreateView(

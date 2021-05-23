@@ -5,7 +5,7 @@
     <data>
         <variable
             name="ApiViewModel"
-            type="com.example.link.viewmodel.HhApiViewModel" />
+            type="com.example.link.viewmodel.SharedViewModel" />
         <variable
             name="FragmentRecycler"
             type="com.example.link.fragments.FragmentRecycler" />

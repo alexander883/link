@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 private const val perPage=100//количество позиций на одну запрашиваемую страницу
 
-class HhApiViewModel: ViewModel() {
+class SharedViewModel: ViewModel() {
     ///cписок компаний, получаемых по запросу
     private val _employers = MutableLiveData<List<Item>>()
     val employers: LiveData<List<Item>> = _employers
