@@ -1,5 +1,6 @@
 package com.example.link
 
+import com.example.link.network.EmployerData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -32,6 +33,21 @@ object HhApi {
     val retrofitService : HhApiService by lazy {
         retrofit.create(HhApiService::class.java) }
 }
+
+//////////////////////////////////////////////
+
+
+interface HhEmApiService {
+    @GET("employers/1455")
+    suspend fun getEmployer(
+      ): EmployerData
+}
+
+object EApi {
+    val retrofitService : HhEmApiService by lazy {
+        retrofit.create(HhEmApiService::class.java) }
+}
+
 /*
 
 /////////////////////////////////////////////////////////////

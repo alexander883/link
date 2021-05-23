@@ -3,12 +3,12 @@ package com.example.link
 import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.link.adapter.HhAdapter
+import com.example.link.adapter.EmployersAdapter
 
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Item>) {
-    val adapter = recyclerView.adapter as HhAdapter
+    val adapter = recyclerView.adapter as EmployersAdapter
     adapter.data=data
 }
 @BindingAdapter("android:visibility")

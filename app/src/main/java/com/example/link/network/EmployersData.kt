@@ -1,6 +1,7 @@
 package com.example.link
 
 import com.squareup.moshi.Json
+////https://github.com/hhru/api/blob/master/docs/employers.md#search
 
 data class EmployersData(
     @Json(name = "per_page")  val perPage:Int,

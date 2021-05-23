@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.link.Item
 import com.example.link.R
 
-class HhAdapter( private  val listener: OnItemClickListener
-): RecyclerView.Adapter<HhAdapter.ViewHolder>() {
+class EmployersAdapter(private  val listener: OnItemClickListener
+): RecyclerView.Adapter<EmployersAdapter.ViewHolder>() {
 
     var data =  listOf<Item>()
         set(value) {
@@ -32,7 +32,6 @@ class HhAdapter( private  val listener: OnItemClickListener
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
-      //  val enWord: TextView = itemView.findViewById(R.id.en_word)
         private val employer: TextView = itemView.findViewById(R.id.employer)
         private val posit: TextView = itemView.findViewById(R.id.posit)
         private val countVac:TextView=itemView.findViewById(R.id.vacCount)

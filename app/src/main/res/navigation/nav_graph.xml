@@ -25,5 +25,13 @@
     <fragment
         android:id="@+id/fragmentRecycler"
         android:name="com.example.link.fragments.FragmentRecycler"
-        android:label="FragmentRecycler" />
+        android:label="FragmentRecycler" >
+        <action
+            android:id="@+id/action_fragmentRecycler_to_fragmentInformation"
+            app:destination="@id/fragmentInformation" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentInformation"
+        android:name="com.example.link.fragments.FragmentInformation"
+        android:label="FragmentInformation" />
 </navigation>
