@@ -14,7 +14,7 @@ import com.example.link.viewmodel.SharedViewModel
 
 class Fragment1 : Fragment() {
     private lateinit var binding: Fragment1Binding
-    private val apiviewmodel: SharedViewModel by activityViewModels()
+    private val sharedviewmodel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class Fragment1 : Fragment() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             fragment1=this@Fragment1
-            apiViewModel=apiviewmodel
+            sharedViewModel=sharedviewmodel
         }
 
     }
@@ -47,9 +47,8 @@ class Fragment1 : Fragment() {
     }
     private fun getData(){
         val searh=binding.textSearh.text.toString()
-        apiviewmodel.setSearch(searh)
+        sharedviewmodel.setSearch(searh)
         Toast.makeText(requireContext(), "$searh", Toast.LENGTH_SHORT).show()
-      //  apiviewmodel?.getHh()
     }
 
 }

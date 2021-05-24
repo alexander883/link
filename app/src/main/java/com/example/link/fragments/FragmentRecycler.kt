@@ -1,7 +1,6 @@
 package com.example.link.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,14 +15,13 @@ import com.example.link.viewmodel.SharedViewModel
 
 class FragmentRecycler : Fragment(), EmployersAdapter.OnItemClickListener  {
     private lateinit var binding: FragmentRecyclerBinding
-    private val apiviewmodel: SharedViewModel by activityViewModels()
+    private val sharedviewmodel: SharedViewModel by activityViewModels()
     private val adapter = EmployersAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View { Log.i("LOG", " onCreateView")
-      //  apiviewmodel = ViewModelProvider(requireActivity()).get(HhApiViewModel::class.java)
+    ): View {
         val fragmentBinding = FragmentRecyclerBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
@@ -31,37 +29,31 @@ class FragmentRecycler : Fragment(), EmployersAdapter.OnItemClickListener  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.i("LOG", "onViewCreated")
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
-
-            apiViewModel=apiviewmodel
+            sharedViewModel=sharedviewmodel
             fragmentRecycler=this@FragmentRecycler
-
             foundHh.adapter=adapter
-
         }
-        apiviewmodel.reset()
-        apiviewmodel.getHh()
-       adapter.data=apiviewmodel.employers.value!!
-
-      //  Toast.makeText(requireContext(), "${k[0]}", Toast.LENGTH_SHORT).show()
+        sharedviewmodel.reset()
+        sharedviewmodel.getHh()
+       adapter.data=sharedviewmodel.employers.value!!
     }
 
 
     fun onClickBack(){
-        apiviewmodel.clickBack()
+        sharedviewmodel.clickBack()
     }
     fun onClickForward(){
-        apiviewmodel.clickForward()
+        sharedviewmodel.clickForward()
        // findNavController().navigate(R.id.action_fragmentRecycler_self)
         //Toast.makeText(requireContext(), "hrhdh", Toast.LENGTH_SHORT).show()
     }
-
+////клик по компании из списка
     override fun onItemClick(position: Int) {
         val clickedItem =adapter.data[position]
-        apiviewmodel.getId(position)
-        apiviewmodel.getEh()
+        sharedviewmodel.getId(position)
+        sharedviewmodel.getEh()
         findNavController().navigate(R.id.action_fragmentRecycler_to_fragmentInformation)
         Toast.makeText(requireContext(), "$position", Toast.LENGTH_SHORT).show()
     }

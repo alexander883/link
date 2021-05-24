@@ -12,7 +12,7 @@ import com.example.link.viewmodel.SharedViewModel
 
 class FragmentInformation : Fragment() {
     private lateinit var binding: FragmentInformationBinding
-    private val apiviewmodel: SharedViewModel by activityViewModels()
+    private val sharedviewmodel: SharedViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,7 +27,7 @@ class FragmentInformation : Fragment() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             fragmentInformation=this@FragmentInformation
-            apiViewModel=apiviewmodel
+            sharedViewModel=sharedviewmodel
             }
 
         }

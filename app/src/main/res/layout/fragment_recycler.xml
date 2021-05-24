@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="ApiViewModel"
+            name="SharedViewModel"
             type="com.example.link.viewmodel.SharedViewModel" />
         <variable
             name="FragmentRecycler"
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="@{@string/all_employers(ApiViewModel.countFound.toString())}"
+            android:text="@{@string/all_employers(SharedViewModel.countFound.toString())}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
 
 
             app:layout_constraintVertical_bias="0.0"
-            app:listData="@{ApiViewModel.employers}">
+            app:listData="@{SharedViewModel.employers}">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:onClick="@{() ->FragmentRecycler.onClickBack()}"
             android:text="@string/back"
-            android:visibility="@{ApiViewModel.visibilityButtonBack}"
+            android:visibility="@{SharedViewModel.visibilityButtonBack}"
             app:layout_constraintBottom_toBottomOf="parent"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
             android:onClick="@{() ->FragmentRecycler.onClickForward()}"
 
             android:text="->"
-            android:visibility="@{ApiViewModel.visibilityButtonForward}"
+            android:visibility="@{SharedViewModel.visibilityButtonForward}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -78,7 +78,7 @@
             android:id="@+id/text_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/page_of_pages(ApiViewModel.currentPage.toString(), ApiViewModel.totalPages.toString())}"
+            android:text="@{@string/page_of_pages(SharedViewModel.currentPage.toString(), SharedViewModel.totalPages.toString())}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_forward"
             app:layout_constraintHorizontal_bias="0.5"

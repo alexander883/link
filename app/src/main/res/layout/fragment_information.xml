@@ -6,7 +6,7 @@
 
     <data>
         <variable
-            name="ApiViewModel"
+            name="SharedViewModel"
             type="com.example.link.viewmodel.SharedViewModel" />
         <variable
             name="FragmentInformation"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="76dp"
             android:layout_marginTop="108dp"
-            android:text="@{ApiViewModel.inf.toString()}"
+            android:text="@{SharedViewModel.inf.toString()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
