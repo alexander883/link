@@ -1,6 +1,6 @@
 package com.example.link
 
-import com.example.link.network.EmployerData
+import com.example.link.network.SingleEmployerData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -41,7 +41,7 @@ object HhApi {
 interface HhEmApiService {
     @GET("$request{employer_id}")
     suspend fun getEmployer(@Path("employer_id") id: String,
-      ): EmployerData
+      ): SingleEmployerData
 }
 
 object EApi {

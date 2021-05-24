@@ -2,7 +2,7 @@ package com.example.link.network
 
 import com.squareup.moshi.Json
 
-data class EmployerData(
+data class SingleEmployerData(
     @Json(name = "name")  val name:String,
     @Json(name = "type")  val type:String?,
     @Json(name = "id")  val id:String,
