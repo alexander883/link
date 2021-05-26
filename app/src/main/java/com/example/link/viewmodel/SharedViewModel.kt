@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.link.EApi
-import com.example.link.HhApi
 import com.example.link.Item
+import com.example.link.network.HhEmployersApi
+import com.example.link.network.HhSingleEmployerApi
 import kotlinx.coroutines.launch
 
 private const val perPage=100//количество позиций на одну запрашиваемую страницу
+enum class HhSingleEmployerApiStatus { LOADING, ERROR, DONE }
 
 class SharedViewModel: ViewModel() {
     ///cписок компаний, получаемых по запросу
@@ -33,38 +34,46 @@ class SharedViewModel: ViewModel() {
     private val _totalPages= MutableLiveData<Int>()
     val totalPages: LiveData<Int> =_totalPages
 
-    private val _clickId= MutableLiveData<String>()
-    val clickId: LiveData<String> =_clickId
+  //  private val _clickId= MutableLiveData<String>()
+  //  val clickId: LiveData<String> =_clickId
+    private val _statusSingleEmployer = MutableLiveData<HhSingleEmployerApiStatus >()
+    val statusSingleEmployer: LiveData<HhSingleEmployerApiStatus > = _statusSingleEmployer
 
 
+  // private var _inf= MutableLiveData<String>()
+        // val inf: LiveData<String> =_inf
 
-    private var _inf= MutableLiveData<String>()
-    val inf: LiveData<String> =_inf
+    private var _status= MutableLiveData<String>()
+    val status: LiveData<String> =_status
 
-init {
+    private var _vacancies= MutableLiveData<String>()
+    val vacancies: LiveData<String> =_vacancies
+    private var _nameEmpoyer= MutableLiveData<String>()
+    val nameEmpoyer: LiveData<String> =_nameEmpoyer
+    private var _typeEmpoyer= MutableLiveData<String>()
+    val typeEmpoyer: LiveData<String> =_typeEmpoyer
+    init {
    // getHh()
     _employers.value= arrayListOf<Item>()
     _visibilityButtonBack.value=false
     _visibilityButtonForward.value=false
     _currentPage.value=1
     _totalPages.value=1
-
-   // _inf.value=""
-}
+    }
 
 
 
- fun setSearch(text:String){
+    fun setSearch(text:String){
      _search.value=text
- }
+    }
 
-
-    fun getHh() {
+///получаем список компаний
+    fun getHhEmployers() {
         viewModelScope.launch {
-           // _status.value = HhApiStatus.LOADING
+
             try {
                 val page=currentPage.value!!-1
-                val listResult = HhApi.retrofitService.getEmployers(
+                val listResult = HhEmployersApi.retrofitService.getEmployers(
                     search.value!!, perPage.toString(), page.toString())
 
                 _employers.value = listResult.items
@@ -84,29 +93,42 @@ init {
                // _status.value = "Success: ${listResult} "
                // _status.value = "Success: ${listResult.items[5]} "
             } catch (e: Exception) {
+
                // _status.value = "Failure: ${e.message}"
             }
         }
     }
 
-    fun getEh() {
+    fun getHhSingleEmployer(id:String) {
         viewModelScope.launch {
+            _statusSingleEmployer.value=HhSingleEmployerApiStatus.LOADING
+            _status.value="Загружается..."
             try {
-                val res= EApi.retrofitService.getEmployer("1455")
-                _inf.value=res.openVacancies
+                val res= HhSingleEmployerApi.retrofitService.getEmployer(id)
+               // _inf.value=res.openVacancies
+                _vacancies.value=res.openVacancies
+                _nameEmpoyer.value=res.name
+                _typeEmpoyer.value=res.type
+
+                _statusSingleEmployer.value=HhSingleEmployerApiStatus.DONE
+                _status.value=""
             }
-        catch (e: Exception){
-            _inf.value= "Failure: ${e.message}"
-        }}}
+            catch (e: Exception){
+                _statusSingleEmployer.value=HhSingleEmployerApiStatus.ERROR
+                _status.value= "Failure: ${e.message}"
+            //    _inf.value= "Failure: ${e.message}"
+            }
+        }
+    }
 
     fun clickForward(){
         _currentPage.value=currentPage.value!! + 1
-        getHh()
+        getHhEmployers()
     }
 
     fun clickBack(){
         _currentPage.value=currentPage.value!! - 1
-        getHh()
+        getHhEmployers()
     }
 
     fun reset(){
@@ -118,9 +140,9 @@ init {
     }
 
 //получаем Id выбранной по клику компании
-    fun getId(position: Int){
-        _clickId.value= employers.value?.get(position)?.id
+   // fun getId(position: Int){
+   //     _clickId.value= employers.value?.get(position)?.id
    //     employers.value
-    }
+  //  }
 
 }

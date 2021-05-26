@@ -1,6 +1,6 @@
-package com.example.link
+package com.example.link.network
 
-import com.example.link.network.SingleEmployerData
+import com.example.link.EmployersData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -21,51 +21,32 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-interface HhApiService {
+interface HhEmployersApiService {
     @GET(request)
     suspend fun getEmployers(
         @Query("text") text:String,
         @Query("per_page") per_page:String,
         @Query("page") page:String
-    ):EmployersData
+    ): EmployersData
 }
 
-object HhApi {
-    val retrofitService : HhApiService by lazy {
-        retrofit.create(HhApiService::class.java) }
+object HhEmployersApi {
+    val retrofitService : HhEmployersApiService by lazy {
+        retrofit.create(HhEmployersApiService::class.java) }
 }
 
 //////////////////////////////////////////////
 
 
-interface HhEmApiService {
+interface HhSingleEmployerApiService {
     @GET("$request{employer_id}")
     suspend fun getEmployer(@Path("employer_id") id: String,
       ): SingleEmployerData
 }
 
-object EApi {
-    val retrofitService : HhEmApiService by lazy {
-        retrofit.create(HhEmApiService::class.java) }
+object HhSingleEmployerApi {
+    val retrofitService : HhSingleEmployerApiService by lazy {
+        retrofit.create(HhSingleEmployerApiService::class.java) }
 }
 
-/*
-
-/////////////////////////////////////////////////////////////
-private val retrofit = Retrofit.Builder()
- .addConverterFactory(ScalarsConverterFactory.create())
- .baseUrl(BASE_URL)
- .build()
-
-interface HhApiService {
- @GET(request)
- suspend fun getEmployers(@Query("text") text:String):String
-}
-
-//suspend fun getEmployers(@Query("ИМЯ дополнительного параметра") text:String):String
-object HhApi {
- val retrofitService : HhApiService by lazy {
-     retrofit.create(HhApiService::class.java) }
-}
-*/
 /////{"items":[{"id":"999","name":}{}

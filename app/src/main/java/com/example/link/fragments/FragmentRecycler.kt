@@ -36,7 +36,7 @@ class FragmentRecycler : Fragment(), EmployersAdapter.OnItemClickListener  {
             foundHh.adapter=adapter
         }
         sharedviewmodel.reset()
-        sharedviewmodel.getHh()
+        sharedviewmodel.getHhEmployers()
        adapter.data=sharedviewmodel.employers.value!!
     }
 
@@ -52,8 +52,9 @@ class FragmentRecycler : Fragment(), EmployersAdapter.OnItemClickListener  {
 ////клик по компании из списка
     override fun onItemClick(position: Int) {
         val clickedItem =adapter.data[position]
-        sharedviewmodel.getId(position)
-        sharedviewmodel.getEh()
+
+     //   sharedviewmodel.getId(position)
+        sharedviewmodel.getHhSingleEmployer(clickedItem.id)
         findNavController().navigate(R.id.action_fragmentRecycler_to_fragmentInformation)
         Toast.makeText(requireContext(), "$position", Toast.LENGTH_SHORT).show()
     }

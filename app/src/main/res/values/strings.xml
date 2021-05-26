@@ -9,4 +9,7 @@
     <string name="all_employers">Найдено компаний: %s</string>
     <string name="page_of_pages">%s из %s</string>
     <string name="vacancies">вакансий %s</string>
+    <string name="name_employer">Компания: %s</string>
+    <string name="type_employer">Тип: %s</string>
+    <string name="vacancies_employer">Открытых вакансий: %s</string>
 </resources>
