@@ -52,6 +52,9 @@ class SharedViewModel: ViewModel() {
     val nameEmpoyer: LiveData<String> =_nameEmpoyer
     private var _typeEmpoyer= MutableLiveData<String>()
     val typeEmpoyer: LiveData<String> =_typeEmpoyer
+
+    private var _logoUrl= MutableLiveData<String>()
+    val logoUrl: LiveData<String> =_logoUrl
     init {
    // getHh()
     _employers.value= arrayListOf<Item>()
@@ -70,7 +73,6 @@ class SharedViewModel: ViewModel() {
 ///получаем список компаний
     fun getHhEmployers() {
         viewModelScope.launch {
-
             try {
                 val page=currentPage.value!!-1
                 val listResult = HhEmployersApi.retrofitService.getEmployers(
@@ -110,6 +112,7 @@ class SharedViewModel: ViewModel() {
                 _nameEmpoyer.value=res.name
                 _typeEmpoyer.value=res.type
 
+                _logoUrl.value=res.logoUrls?.extension240
                 _statusSingleEmployer.value=HhSingleEmployerApiStatus.DONE
                 _status.value=""
             }

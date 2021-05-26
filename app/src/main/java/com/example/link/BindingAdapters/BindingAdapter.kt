@@ -1,8 +1,11 @@
 package com.example.link
 
 import android.view.View
+import android.widget.ImageView
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.link.adapter.EmployersAdapter
 
 
@@ -19,3 +22,12 @@ fun bindCheckButtonBack(view: View, visibilityButtonBack: Boolean) {
 fun bindCheckButtonForward(view: View, visibilityButtonForward: Boolean) {
     view.visibility = if (visibilityButtonForward) View.VISIBLE else View.GONE
 }
+
+@BindingAdapter("imageUrl")
+fun bindImage(imgView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+        imgView.load(imgUri)
+    }
+}
+
