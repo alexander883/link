@@ -11,78 +11,105 @@
             type="com.example.link.fragments.FragmentRecycler" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+
+        >
 
 
-        <TextView
-            android:id="@+id/countFound"
-
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="@{@string/all_employers(SharedViewModel.countFound.toString())}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="77" />
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/status_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:HhEmpoyersApiStatus="@{SharedViewModel.statusEmployers}"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/found_hh"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
 
-            android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/button_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:StatusConstraintLayout="@{SharedViewModel.statusEmployers}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/countFound"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/countFound"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@{@string/all_employers(SharedViewModel.countFound.toString())}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="77" />
 
 
-            app:layout_constraintVertical_bias="0.0"
-            app:listData="@{SharedViewModel.employers}">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/found_hh"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
 
-        </androidx.recyclerview.widget.RecyclerView>
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/button_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/countFound"
 
 
-        <Button
-            android:id="@+id/button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() ->FragmentRecycler.onClickBack()}"
-            android:text="@string/back"
-            android:visibility="@{SharedViewModel.visibilityButtonBack}"
-            app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:listData="@{SharedViewModel.employers}">
 
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/found_hh"
-            app:layout_constraintVertical_bias="1.0" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-        <Button
-            android:id="@+id/button_forward"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() ->FragmentRecycler.onClickForward()}"
+            <Button
+                android:id="@+id/button_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() ->FragmentRecycler.onClickBack()}"
+                android:text="@string/back"
+                android:visibility="@{SharedViewModel.visibilityButtonBack}"
+                app:layout_constraintBottom_toBottomOf="parent"
 
-            android:text="->"
-            android:visibility="@{SharedViewModel.visibilityButtonForward}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/found_hh"
+                app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/text_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/page_of_pages(SharedViewModel.currentPage.toString(), SharedViewModel.totalPages.toString())}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_forward"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button_back" />
+            <Button
+                android:id="@+id/button_forward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() ->FragmentRecycler.onClickForward()}"
 
+                android:text="->"
+                android:visibility="@{SharedViewModel.visibilityButtonForward}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/text_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/page_of_pages(SharedViewModel.currentPage.toString(), SharedViewModel.totalPages.toString())}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

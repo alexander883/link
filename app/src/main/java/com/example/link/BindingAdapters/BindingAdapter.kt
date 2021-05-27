@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.link.adapter.EmployersAdapter
+import com.example.link.viewmodel.HhEmployersApiStatus
 
 
 @BindingAdapter("listData")
@@ -27,7 +28,38 @@ fun bindCheckButtonForward(view: View, visibilityButtonForward: Boolean) {
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        imgView.load(imgUri)
+        imgView.load(imgUri){
+              placeholder(R.drawable.load_img)
+             error(R.drawable.error_img)
+        }
+
     }
 }
 
+@BindingAdapter("HhEmpoyersApiStatus")
+fun bindStatus(statusImageView: ImageView, status: HhEmployersApiStatus?) {
+    when (status) {
+        HhEmployersApiStatus.LOADING -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.load_img)
+        }
+        HhEmployersApiStatus.ERROR -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.error_img)
+        }
+        HhEmployersApiStatus.DONE -> {
+            statusImageView.visibility = View.GONE
+        }
+    }
+}
+@BindingAdapter("StatusConstraintLayout")
+fun bindConstraintLayout(view: View, status: HhEmployersApiStatus?) {
+    when (status) {
+        HhEmployersApiStatus.LOADING,  HhEmployersApiStatus.ERROR ->{
+            view.visibility=View.INVISIBLE
+        }
+        HhEmployersApiStatus.DONE->{
+            view.visibility=View.VISIBLE
+        }
+    }
+}

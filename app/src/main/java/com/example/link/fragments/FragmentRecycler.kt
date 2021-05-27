@@ -36,6 +36,7 @@ class FragmentRecycler : Fragment(), EmployersAdapter.OnItemClickListener  {
             foundHh.adapter=adapter
         }
         sharedviewmodel.reset()
+        sharedviewmodel.resetEmpoyer()
         sharedviewmodel.getHhEmployers()
        adapter.data=sharedviewmodel.employers.value!!
     }
@@ -46,14 +47,10 @@ class FragmentRecycler : Fragment(), EmployersAdapter.OnItemClickListener  {
     }
     fun onClickForward(){
         sharedviewmodel.clickForward()
-       // findNavController().navigate(R.id.action_fragmentRecycler_self)
-        //Toast.makeText(requireContext(), "hrhdh", Toast.LENGTH_SHORT).show()
     }
 ////клик по компании из списка
     override fun onItemClick(position: Int) {
         val clickedItem =adapter.data[position]
-
-     //   sharedviewmodel.getId(position)
         sharedviewmodel.getHhSingleEmployer(clickedItem.id)
         findNavController().navigate(R.id.action_fragmentRecycler_to_fragmentInformation)
         Toast.makeText(requireContext(), "$position", Toast.LENGTH_SHORT).show()
