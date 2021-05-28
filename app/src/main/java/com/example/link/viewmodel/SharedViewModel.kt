@@ -34,8 +34,6 @@ class SharedViewModel: ViewModel() {
     private val _totalPages= MutableLiveData<Int>()
     val totalPages: LiveData<Int> =_totalPages
 
-  //  private val _clickId= MutableLiveData<String>()
-  //  val clickId: LiveData<String> =_clickId
     private val _statusEmployers = MutableLiveData<HhEmployersApiStatus >()
     val statusEmployers: LiveData<HhEmployersApiStatus > = _statusEmployers
 

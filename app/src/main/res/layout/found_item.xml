@@ -18,7 +18,6 @@
 
         <TextView
             android:id="@+id/vacCount"
-
             android:layout_width="324dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -32,9 +31,7 @@
             tools:text="text1" />
 
         <TextView
-
             android:id="@+id/employer"
-
             android:layout_width="324dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"

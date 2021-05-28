@@ -10,10 +10,14 @@ import com.example.link.Item
 import com.example.link.R
 
 class EmployersAdapter(private  val listener: OnItemClickListener
-): RecyclerView.Adapter<EmployersAdapter.ViewHolder>() {
-
-    var data =  listOf<Item>()
-        set(value) {
+): RecyclerView.Adapter<EmployersAdapter.ViewHolder>(){
+     var page:Int = 1
+         set(value){
+             field = value
+             notifyDataSetChanged()
+            }
+     var data =  listOf<Item>()
+         set(value) {
             field = value
             notifyDataSetChanged()
         }
@@ -50,7 +54,7 @@ class EmployersAdapter(private  val listener: OnItemClickListener
         fun bind(item: Item, position: Int) {
             employer.text = item.name
             countVac.text="Вакансий: "+item.open_vacancies.toString()
-            posit.text=(position+1).toString()
+            posit.text=((position+1)+100*(page-1)).toString()
         }
     }
     interface OnItemClickListener {

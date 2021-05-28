@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -35,20 +34,14 @@ class Fragment1 : Fragment() {
 
     }
 
-
-    fun pressButton1(){
-        getData()
-        findNavController().navigate(R.id.action_fragment1_to_fragmentResult)
-    }
-
     fun pressButton2(){
         getData()
         findNavController().navigate(R.id.action_fragment1_to_fragmentRecycler)
     }
     private fun getData(){
-        val searh=binding.textSearh.text.toString()
-        sharedviewmodel.setSearch(searh)
-        Toast.makeText(requireContext(), "$searh", Toast.LENGTH_SHORT).show()
+        val search=binding.textSearh.text.toString()
+        sharedviewmodel.setSearch(search)
+      //  Toast.makeText(requireContext(), "$searh", Toast.LENGTH_SHORT).show()
     }
 
 }

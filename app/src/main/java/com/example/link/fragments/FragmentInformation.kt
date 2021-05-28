@@ -29,6 +29,5 @@ class FragmentInformation : Fragment() {
             fragmentInformation=this@FragmentInformation
             sharedViewModel=sharedviewmodel
             }
-
         }
     }
