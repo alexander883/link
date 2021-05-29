@@ -46,7 +46,8 @@ class SharedViewModel: ViewModel() {
     val nameEmpoyer: LiveData<String> =_nameEmpoyer
     private var _typeEmpoyer= MutableLiveData<String>()
     val typeEmpoyer: LiveData<String> =_typeEmpoyer
-
+    private var _siteEmpoyer= MutableLiveData<String>()
+    val siteEmpoyer: LiveData<String> =_siteEmpoyer
     private var _logoUrl= MutableLiveData<String>()
     val logoUrl: LiveData<String> =_logoUrl
     init {
@@ -95,11 +96,10 @@ class SharedViewModel: ViewModel() {
             _statusSingleEmpoyer.value="Загружается..."
             try {
                 val res= HhSingleEmployerApi.retrofitService.getEmployer(id)
-               // _inf.value=res.openVacancies
                 _vacancies.value=res.openVacancies
                 _nameEmpoyer.value=res.name
                 _typeEmpoyer.value=res.type
-
+                _siteEmpoyer.value=res.siteUrl
                 _logoUrl.value=res.logoUrls?.extension240
                 _statusSingleEmpoyer.value=""
             }

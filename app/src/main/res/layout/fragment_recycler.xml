@@ -95,7 +95,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="@{() ->FragmentRecycler.onClickForward()}"
-
                 android:text="->"
                 android:visibility="@{SharedViewModel.visibilityButtonForward}"
                 app:layout_constraintBottom_toBottomOf="parent"

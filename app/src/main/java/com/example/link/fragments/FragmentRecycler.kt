@@ -41,7 +41,7 @@ class FragmentRecycler: Fragment(), EmployersAdapter.OnItemClickListener  {
             getHhEmployers()
         }
         adapter.data=sharedviewmodel.employers.value!!
-
+        adapter.page=sharedviewmodel.currentPage.value!!
     }
     fun onClickBack(){
         sharedviewmodel.clickBack()
